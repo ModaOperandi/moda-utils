@@ -16,7 +16,10 @@ from ghapi.all import GhApi, paged
 # 2021 @barryoneill for https://github.com/ModaOperandi/moda-utils
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description='Grants a team the same access to repos that another team has')
+    parser = argparse.ArgumentParser(
+        description='Find all repos for which a team has been granted an explicit access role, '
+                    'and grant a different team the same access.  Requires a GH_TOKEN token in scope, '
+                    'which belongs to an organization admin, with \'repo\' scope.')
     parser.add_argument('org', metavar='org', type=str, help='your organization')
     parser.add_argument('fromteam', metavar='fromteam', type=str, help='the source team name')
     parser.add_argument('toteam', metavar='toteam', type=str, help='the team to which the permissions will be cloned')
